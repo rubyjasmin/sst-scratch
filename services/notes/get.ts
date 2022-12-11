@@ -8,7 +8,7 @@ export const handler = ApiHandler(async (event) => {
     TableName: Table.Notes.tableName,
     Key: {
       userId: {
-        S: "123"
+        S: event.requestContext.authorizer.iam.cognitoIdentity.identityId
       },
       noteId: {
         S: event.pathParameters!.id!

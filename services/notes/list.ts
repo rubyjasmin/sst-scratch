@@ -9,7 +9,7 @@ export const handler = ApiHandler(async (event) => {
     KeyConditionExpression: "userId = :userId",
     ExpressionAttributeValues: {
       ":userId": {
-        S: "123"
+        S: event.requestContext.authorizer.iam.cognitoIdentity.identityId
       }
     }
   };
